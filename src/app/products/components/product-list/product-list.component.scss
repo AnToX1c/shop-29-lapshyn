@@ -1,0 +1,20 @@
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.product {
+  &-item {
+    width: 33%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+  }
+
+  &-item__field {
+    margin: 10px 0;
+  }
+}

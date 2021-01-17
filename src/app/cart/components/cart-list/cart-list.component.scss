@@ -1,0 +1,22 @@
+.carts {
+  background-color: lightgrey;
+}
+
+.cart {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+  }
+
+  &-item {
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  &-item__field {
+    margin: 5px 0;
+  }
+}

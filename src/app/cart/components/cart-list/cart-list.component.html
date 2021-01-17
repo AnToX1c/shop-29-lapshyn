@@ -1,0 +1,13 @@
+<div class="carts">
+  <ul class="cart-list" *ngIf="cartService.getProducts().length; else emptyMessage">
+    <li *ngFor="let product of cartService.getProducts(); trackBy: trackByProducts" class="cart-item">
+      <p class="cart-item__field"><strong>Name:</strong> {{product.name}}</p>
+      <p class="cart-item__field"><strong>Amount:</strong> {{product.amount}}</p>
+      <p class="cart-item__field"><strong>Price:</strong> {{product.amount * product.price}}</p>
+    </li>
+  </ul>
+
+  <ng-template #emptyMessage>
+    <p>There is no product in the cart yet.</p>
+  </ng-template>
+</div>

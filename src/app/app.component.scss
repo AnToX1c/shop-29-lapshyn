@@ -1,0 +1,17 @@
+.product {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.product-vs-cart {
+  display: flex;
+}
+
+app-product-list {
+  width: 80%;
+}
+
+app-cart-list {
+  width: 20%;
+}
