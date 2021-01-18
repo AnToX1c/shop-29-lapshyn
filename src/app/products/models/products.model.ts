@@ -19,10 +19,10 @@ export interface ProductModel {
 
 export class Product implements ProductModel {
   constructor(
-    public id: number = 0,
+    public id: number = null,
     public name: string = '',
     public description: string = '',
-    public price: number = 0,
+    public price: number = null,
     public category: Products = Products.Others,
     public isAvailable: boolean = false,
   ) {}
