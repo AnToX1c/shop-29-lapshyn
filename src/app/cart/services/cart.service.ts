@@ -7,6 +7,8 @@ export class CartService {
 
   constructor() { }
 
+  // вместо object можно использовать интерфейс построенный на базе ProductModel,
+  // расширив его необходимыми полями
   getProducts(): object[] {
     return [
       {
