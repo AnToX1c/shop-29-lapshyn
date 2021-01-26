@@ -1,10 +1,8 @@
 <ul class="products-list">
   <li class="product-item" *ngFor="let product of productsService.getProducts(); trackBy: trackByProducts">
-    <p class="product-item__field"><strong>Name:</strong> {{product.name}}</p>
-    <p class="product-item__field"><strong>Description:</strong> {{product.description}}</p>
-    <p class="product-item__field"><strong>Price:</strong> {{product.price}}</p>
-    <p class="product-item__field"><strong>Category:</strong> {{product.category}}</p>
-    <p class="product-item__field"><strong>isAvailable:</strong> {{product.isAvailable}}</p>
-    <app-product></app-product>
+    <app-product
+      [product]="product"
+      (buy)="onBuy($event)"
+    ></app-product>
   </li>
 </ul>

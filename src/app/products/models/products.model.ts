@@ -27,3 +27,9 @@ export class Product implements ProductModel {
     public isAvailable: boolean = false,
   ) {}
 }
+
+export interface ProductCartModel extends ProductModel {
+  quantity?: number;
+  totalPrice?: number;
+}
+

@@ -1,7 +1,13 @@
+h1 {
+  text-align: center;
+}
+
 .product {
   display: inline-block;
   padding: 10px;
+  margin: 0 20px;
   border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 .product-vs-cart {
@@ -9,9 +15,9 @@
 }
 
 app-product-list {
-  width: 80%;
+  width: 75%;
 }
 
 app-cart-list {
-  width: 20%;
+  width: 25%;
 }

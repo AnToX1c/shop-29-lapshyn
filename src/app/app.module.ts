@@ -1,22 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
-import { FirstComponent, ProductComponent, ProductListComponent } from './products';
-import { CartListComponent } from './cart';
+
+import { CartModule } from './cart/cart.module';
+import { ProductsModule } from './products/products.module';
+import { OrdersModule } from './orders/orders.module';
+import { SharedModule } from './shared/shared.module';
+import { FirstComponent } from './products';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
-    ProductComponent,
-    ProductListComponent,
-    CartListComponent,
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
+    SharedModule,
+    CartModule,
+    ProductsModule,
+    OrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

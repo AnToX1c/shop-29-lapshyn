@@ -1,1 +1,15 @@
-<button mat-raised-button color="primary" type="button" class="button" (click)="onBuy()">Buy</button>
+<mat-card>
+  <p class="field"><strong>Name:</strong> {{product.name}}</p>
+  <p class="field"><strong>Description:</strong> {{product.description}}</p>
+  <p class="field"><strong>Price:</strong> {{product.price}}</p>
+  <p class="field"><strong>Category:</strong> {{product.category}}</p>
+  <p class="field"><strong>isAvailable:</strong> {{product.isAvailable}}</p>
+  <button
+    mat-raised-button
+    class="button"
+    color="primary"
+    type="button"
+    [disabled]="!product.isAvailable"
+    (click)="onBuy()"
+  >Buy</button>
+</mat-card>

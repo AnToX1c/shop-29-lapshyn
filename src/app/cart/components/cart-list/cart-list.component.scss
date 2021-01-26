@@ -1,5 +1,14 @@
+:host {
+  margin: 10px;
+}
+
 .carts {
   background-color: lightgrey;
+  padding: 10px;
+
+  &-header {
+    margin: 5px 0;
+  }
 }
 
 .cart {
@@ -14,9 +23,21 @@
   &-item {
     padding: 5px;
     box-sizing: border-box;
+    border-bottom: 1px solid grey;
+    transition: background-color 0.2s ease-in;
+
+    &.highlighted {
+      background-color: silver;
+    }
   }
 
-  &-item__field {
-    margin: 5px 0;
+  &-info {
+    margin: 0;
+    line-height: 30px;
   }
+}
+
+h2,
+.empty-message {
+  margin: 0;
 }
