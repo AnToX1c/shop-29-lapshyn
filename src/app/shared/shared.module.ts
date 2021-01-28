@@ -10,8 +10,9 @@ import { HighlightDirective } from './directives/highlight.directive';
   declarations: [HighlightDirective],
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatCardModule,
+    // Если эти модули не нужны для директивы этого модуля, то их можно только экспортировать
+    // MatButtonModule,
+    // MatCardModule,
   ],
   exports: [
     MatButtonModule,
