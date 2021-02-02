@@ -19,11 +19,8 @@ export class CartListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // this.updateProducts();
     this.itemsChanged = this.cartService.itemsChanged$.pipe(
       startWith('start'), // фейковый старт потока, чтобы запустить updateProducts
-      // но мне кажеться, что его запускать не нужно, ведь корзина должна обновиться
-      // после того, как туда попадет первый товар
       tap(() => this.updateProducts()),
     ).subscribe();
   }
