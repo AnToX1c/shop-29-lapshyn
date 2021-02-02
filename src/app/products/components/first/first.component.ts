@@ -1,13 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Optional } from '@angular/core';
 
 import { ProductModel, Products } from '../../models/products.model';
+import { ConfigOptionsService } from '../../../core/services/config-options.service';
+import { ConstantService, ConstantServiceObj } from '../../../core/services/constant.service';
+import { generatedString, GeneratorFactory } from '../../../core/services/generator.factory';
+import { GeneratorService } from '../../../core/services/generator';
+import { LocalStorageService, LocalStorageSrvInstance } from '../../../core/services/local-storage.service';
 
 @Component({
   selector: 'app-first',
   templateUrl: './first.component.html',
-  styleUrls: ['./first.component.scss']
+  styleUrls: ['./first.component.scss'],
+  providers: [
+    ConfigOptionsService,
+    { provide: ConstantService, useValue: ConstantServiceObj },
+    GeneratorService,
+    { provide: generatedString, useFactory: GeneratorFactory(7), deps: [GeneratorService] },
+    { provide: LocalStorageService, useValue: LocalStorageSrvInstance },
+  ],
 })
-export class FirstComponent implements OnInit {
+export class FirstComponent implements OnInit, OnDestroy {
   firstProduct: ProductModel[] = [{
     id: 0,
     name: 'Hublot Big Bang Original',
@@ -16,9 +28,28 @@ export class FirstComponent implements OnInit {
     category: Products.Luxury,
     isAvailable: true,
   }];
+  localStrKey = 'my-local-storage-key';
+  localStrValue: string;
 
-  constructor() { }
+  constructor(
+    @Optional() private configOptionsService: ConfigOptionsService,
+    @Optional() private constantService: ConstantService,
+    @Optional() @Inject(generatedString) private generatorService: any,
+    @Optional() private localStorageIns: LocalStorageService,
+  ) { }
 
   ngOnInit(): void {
+    this.configOptionsService.setConfig({id: 0, login: 'first', email: 'firstname@email.com'});
+    console.log('config from configOptionsService: ', this.configOptionsService.getConfig());
+
+    console.log('constantService: ');
+    console.dir(this.constantService);
+
+    this.localStorageIns.setData(this.localStrKey, this.generatorService);
+    this.localStrValue = this.localStorageIns.getData(this.localStrKey);
+  }
+
+  ngOnDestroy(): void {
+    this.localStorageIns.removeData(this.localStrKey);
   }
 }

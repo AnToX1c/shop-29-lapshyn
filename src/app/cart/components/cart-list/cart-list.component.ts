@@ -30,19 +30,19 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(id: number): void {
-    this.cartService.deleteProduct(id);
+    this.cartService.removeProduct(id);
   }
 
   onQuantityChange(id: number, quantity: number): void {
-    this.cartService.updateProduct(id, 'quantity' , quantity);
+    this.cartService.changeQuantity(id, quantity);
   }
 
   getTotalItems(): number {
-    return this.cartService.getSummaryBy('quantity');
+    return this.cartService.getTotalQuantity();
   }
 
   getTotalPrice(): number {
-    return this.cartService.getSummaryBy('totalPrice');
+    return this.cartService.getTotalPrice();
   }
 
   trackByProducts(index: number, item): number {

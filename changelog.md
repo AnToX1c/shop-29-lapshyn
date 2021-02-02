@@ -1,4 +1,10 @@
 # Changelog
+### Task 3 (02/02/2021)
+ 1. Modified CartService
+ 2. Created ConfigOptionsService, ConstantsService, LocalStorageService.
+ 3. Registered GeneratorFactory with '*generatedString*' token, useFactory & deps
+ 4. Added directive `appStyledByClick` with @Input() + HostListener + ElementRef + Renderer2 to the `div.product`
+
 ### Task 2 (26/01/2021)
  1. CartModule, ProductsModule, OrdersModule, SharedModule were created
  2. Added item to cart by click
