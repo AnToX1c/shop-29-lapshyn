@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { filter, take, tap } from 'rxjs/operators';
 
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/products.model';
@@ -13,19 +15,23 @@ import { CartService } from '../../../cart';
 })
 export class ProductListComponent implements OnInit {
 
+  products: Observable<Product[]>;
+
   constructor(
-    public productsService: ProductsService,
-    public cartService: CartService,
+    private productsService: ProductsService,
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
+    this.products = this.productsService.getProducts();
   }
 
   onBuy(id: number): void {
-    const item: Product = this.productsService.getProduct(id);
-    if (item.isAvailable) {
-      this.cartService.addProduct(item);
-    }
+    this.productsService.getProduct(id).pipe(
+      take(1),
+      filter(item => item.isAvailable),
+      tap(product => this.cartService.addProduct(product)),
+    ).subscribe();
   }
 
   trackByProducts(index: number, item: Product): number {

@@ -1,7 +1,7 @@
 <mat-card>
-  <p class="field"><strong>Name:</strong> {{product.name}}</p>
+  <p class="field"><strong>Name:</strong> {{product.name | uppercase}}</p>
   <p class="field"><strong>Description:</strong> {{product.description}}</p>
-  <p class="field"><strong>Price:</strong> {{product.price}}</p>
+  <p class="field"><strong>Price:</strong> {{product.price | currency:'USD':'symbol':"1.0-2"}}</p>
   <p class="field"><strong>Category:</strong> {{product.category}}</p>
   <p class="field"><strong>isAvailable:</strong> {{product.isAvailable}}</p>
   <button

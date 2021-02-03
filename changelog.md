@@ -1,4 +1,10 @@
 # Changelog
+### Task 4 (03/02/2021)
+ 1. Built-in CurrencyPipe, UpperCasePipe pipes are used in the cart-list.component, product.component, cart-item.component
+ 2. AsyncPipe is used in the product-list.component. Method getProducts() returns Observable.
+ 3. OrderByPipe is used in the cart-list.component.
+ 4. CommonModule was moved to the SharedModule.
+
 ### Task 3 (02/02/2021)
  1. Modified CartService
  2. Created ConfigOptionsService, ConstantsService, LocalStorageService.

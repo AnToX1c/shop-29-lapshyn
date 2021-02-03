@@ -1,16 +1,29 @@
 <div class="carts">
   <h2 class="carts-header">Purchased items:</h2>
   <div class="cart-list" *ngIf="products.length; else emptyMessage">
+    <div class="cart-filter">
+      <label>
+        <i class="arrow" [ngClass]="isAsc ? 'arrow--down' : 'arrow--up'"></i>
+        <input type="checkbox" [checked]="isAsc" (change)="isAsc = !isAsc" hidden/>
+      </label>
+      <mat-form-field>
+        <mat-label>Order by</mat-label>
+        <mat-select [(value)]="selectedOption">
+          <mat-option *ngFor="let option of options" [value]="option.value">{{option.name | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
     <app-cart-item
       appHighlight
-      *ngFor="let product of products; trackBy: trackByProducts"
+      *ngFor="let product of products | orderBy:selectedOption:isAsc; trackBy: trackByProducts"
       class="cart-item"
       [product]="product"
       (delete)="onDelete($event)"
       (quantityChange)="onQuantityChange(product.id, $event)"
     ></app-cart-item>
 
-    <p class="cart-info">Summary price: {{getTotalPrice()}}</p>
+    <p class="cart-info">Summary price: {{getTotalPrice() | currency:'USD':'symbol':"1.0-2"}}</p>
     <p class="cart-info">Total amount: {{getTotalItems()}}</p>
   </div>
 

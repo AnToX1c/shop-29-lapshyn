@@ -5,13 +5,26 @@ import { startWith, tap } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
 import { ProductCartModel } from '../../../products/models/products.model';
 
+type Options = {
+  value: string,
+  name: string,
+};
+
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
 })
+
 export class CartListComponent implements OnInit, OnDestroy {
-  public products: ProductCartModel[] = [];
+  isAsc = true;
+  options: Options[] = [
+    { value: 'name', name: 'Name' },
+    { value: 'totalPrice', name: 'Price' },
+    { value: 'quantity', name: 'Amount' },
+  ];
+  products: ProductCartModel[] = [];
+  selectedOption: string = this.options[0].value;
   private itemsChanged: Subscription;
 
   constructor(
