@@ -5,11 +5,21 @@
   <p class="field"><strong>Category:</strong> {{product.category}}</p>
   <p class="field"><strong>isAvailable:</strong> {{product.isAvailable}}</p>
   <button
+    *ngIf="!isEditable()"
     mat-raised-button
     class="button"
     color="primary"
     type="button"
     [disabled]="!product.isAvailable"
-    (click)="onBuy()"
+    (click)="onBuy($event)"
   >Buy</button>
+  <button
+    *ngIf="isEditable()"
+    mat-raised-button
+    class="button"
+    color="primary"
+    type="button"
+    [disabled]="false"
+    (click)="onEdit($event)"
+  >Edit</button>
 </mat-card>

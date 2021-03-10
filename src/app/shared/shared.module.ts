@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { HighlightDirective, StyledByClickDirective } from './directives';
 import { OrderByPipe } from './pipes';
@@ -25,12 +25,12 @@ import { OrderByPipe } from './pipes';
     // MatCardModule,
   ],
   exports: [
-    BrowserAnimationsModule,
     CommonModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTabsModule,
     HighlightDirective,
     StyledByClickDirective,
     OrderByPipe,

@@ -1,8 +1,12 @@
 <ul class="products-list">
-  <li class="product-item" *ngFor="let product of products | async; trackBy: trackByProducts">
+  <li class="product-item" *ngFor="let product of products | async; trackBy: trackByProducts" [routerLink]="['/product', product.id]">
     <app-product
       [product]="product"
       (buy)="onBuy($event)"
     ></app-product>
   </li>
 </ul>
+<ng-container *ngIf="isVisible()">
+  <a [routerLink]="['../cart']">Open Cart</a> <br>
+  <a [routerLink]="['../admin']">Admin</a>
+</ng-container>

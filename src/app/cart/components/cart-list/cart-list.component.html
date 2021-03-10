@@ -25,6 +25,7 @@
 
     <p class="cart-info">Summary price: {{getTotalPrice() | currency:'USD':'symbol':"1.0-2"}}</p>
     <p class="cart-info">Total amount: {{getTotalItems()}}</p>
+    <a [routerLink]="['../order']">Proceed order</a>
   </div>
 
   <ng-template #emptyMessage>

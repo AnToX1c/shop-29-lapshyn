@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-import { startWith, tap } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
 import { ProductCartModel } from '../../../products/models/products.model';
 
@@ -11,12 +9,11 @@ type Options = {
 };
 
 @Component({
-  selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
 })
 
-export class CartListComponent implements OnInit, OnDestroy {
+export class CartListComponent implements OnInit {
   isAsc = true;
   options: Options[] = [
     { value: 'name', name: 'Name' },
@@ -25,25 +22,18 @@ export class CartListComponent implements OnInit, OnDestroy {
   ];
   products: ProductCartModel[] = [];
   selectedOption: string = this.options[0].value;
-  private itemsChanged: Subscription;
 
   constructor(
     private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
-    this.itemsChanged = this.cartService.itemsChanged$.pipe(
-      startWith('start'), // фейковый старт потока, чтобы запустить updateProducts
-      tap(() => this.updateProducts()),
-    ).subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.itemsChanged.unsubscribe();
+    this.updateProducts();
   }
 
   onDelete(id: number): void {
     this.cartService.removeProduct(id);
+    this.updateProducts();
   }
 
   onQuantityChange(id: number, quantity: number): void {

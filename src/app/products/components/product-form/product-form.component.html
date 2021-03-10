@@ -1,0 +1,32 @@
+<mat-card class="card">
+  <form #form="ngForm">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" class="field" type="text" name="name" [(ngModel)]="product.name">
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input id="description" class="field" type="text" name="description" [(ngModel)]="product.description">
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input id="price" class="field" type="number" name="price" [(ngModel)]="product.price">
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <input id="category" class="field" type="text" name="category" [(ngModel)]="product.category">
+    </div>
+    <div>
+      <label for="availability">isAvailable:</label>
+      <input id="availability" class="field" type="checkbox" name="isAvailable" [(ngModel)]="product.isAvailable">
+    </div>
+    <button
+      mat-raised-button
+      class="button"
+      color="primary"
+      type="button"
+      [disabled]="form.invalid"
+      (click)="onSave()"
+    >Save</button>
+  </form>
+</mat-card>

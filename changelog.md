@@ -1,4 +1,15 @@
 # Changelog
+### Task 5 (10/03/2021)
+ 1. Set `/products-list` as default route.
+ 2. Added `/product/:productID` route for single card, `/cart` route.
+ 3. ProcessOrderComponent (`/order`) is loading after CanLoadGuard.
+ 4. Implemented for Admin module:
+    - `/admin` + CanActivate Guard;
+    - `/admin/products`, `/admin/product/add`, `/admin/orders`;
+    - `/admin/product/edit:productID` + resolve guard + CanDeactivate Guard.
+    - AdminModule is activated after CanActivateGuard and is loaded after CanLoadGuard.
+  5. Local Storage is used for keeping already purchased products.
+
 ### Task 4 (03/02/2021)
  1. Built-in CurrencyPipe, UpperCasePipe pipes are used in the cart-list.component, product.component, cart-item.component
  2. AsyncPipe is used in the product-list.component. Method getProducts() returns Observable.

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, take, tap } from 'rxjs/operators';
 
@@ -8,7 +9,6 @@ import { CartService } from '../../../cart';
 
 
 @Component({
-  selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private cartService: CartService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +37,9 @@ export class ProductListComponent implements OnInit {
 
   trackByProducts(index: number, item: Product): number {
     return item.id;
+  }
+
+  isVisible(): boolean {
+    return !this.router.url.includes('/admin');
   }
 }

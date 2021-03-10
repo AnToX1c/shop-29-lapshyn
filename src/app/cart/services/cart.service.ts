@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { ProductCartModel } from '../../products/models/products.model';
+import { LocalStorageService } from '../../core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  public itemsChanged$: Subject<any> = new Subject<any>();
   private cartProducts: Array<ProductCartModel> = [];
   private totalQuantity = 0;
   private totalSum = 0;
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService,
+  ) { }
 
   getProducts(): ProductCartModel[] {
+    this.cartProducts = this.localStorageService.getData('cartProducts');
+    this.updateCartData();
     return [...this.cartProducts];
   }
 
@@ -29,13 +32,13 @@ export class CartService {
       this.cartProducts.push(item);
     }
     this.updateCartData();
-    this.itemsChanged$.next();
+    this.localStorageService.setData('cartProducts', this.cartProducts);
   }
 
   removeProduct(id: number): void {
     this.cartProducts = this.cartProducts.filter(i => i.id !== id);
     this.updateCartData();
-    this.itemsChanged$.next();
+    this.localStorageService.setData('cartProducts', this.cartProducts);
   }
 
   changeQuantity(id: number, value: any): void {
@@ -44,7 +47,7 @@ export class CartService {
       this.cartProducts[exist].quantity = value;
       this.calcTotalPrice(exist);
       this.updateCartData();
-      this.itemsChanged$.next();
+      this.localStorageService.setData('cartProducts', this.cartProducts);
     }
   }
 

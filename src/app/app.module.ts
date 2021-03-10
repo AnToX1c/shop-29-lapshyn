@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ProductsModule } from './products/products.module';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-
-import { CartModule } from './cart/cart.module';
-import { ProductsModule } from './products/products.module';
-import { OrdersModule } from './orders/orders.module';
-import { SharedModule } from './shared/shared.module';
 import { FirstComponent } from './products';
+import { LocalStorageService } from './core';
 
 @NgModule({
   declarations: [
@@ -15,13 +15,14 @@ import { FirstComponent } from './products';
     FirstComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
-    CartModule,
     ProductsModule,
-    OrdersModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    LocalStorageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

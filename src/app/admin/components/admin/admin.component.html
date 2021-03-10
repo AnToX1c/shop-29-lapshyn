@@ -1,0 +1,27 @@
+<h3>Admin panel</h3>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+     routerLink="./"
+     [active]="isActiveRoute('')">
+    Admin
+  </a>
+  <a mat-tab-link
+    routerLink="./products"
+    [active]="isActiveRoute('/products')">
+    Products
+  </a>
+  <a mat-tab-link
+     routerLink="./orders"
+     [active]="isActiveRoute('/orders')">
+    Orders
+  </a>
+</nav>
+<button
+  *ngIf="isAddButtonVisible"
+  mat-raised-button
+  class="button"
+  color="primary"
+  type="button"
+  (click)="onAdd()"
+>Add new product</button>
+<router-outlet></router-outlet>

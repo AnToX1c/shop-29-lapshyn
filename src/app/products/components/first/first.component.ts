@@ -1,11 +1,16 @@
 import { Component, Inject, OnDestroy, OnInit, Optional } from '@angular/core';
 
 import { ProductModel, Products } from '../../models/products.model';
-import { ConfigOptionsService } from '../../../core/services/config-options.service';
-import { ConstantService, ConstantServiceObj } from '../../../core/services/constant.service';
-import { generatedString, GeneratorFactory } from '../../../core/services/generator.factory';
-import { GeneratorService } from '../../../core/services/generator';
-import { LocalStorageService, LocalStorageSrvInstance } from '../../../core/services/local-storage.service';
+import {
+  ConfigOptionsService,
+  ConstantService,
+  ConstantServiceObj,
+  generatedString,
+  GeneratorFactory,
+  GeneratorService,
+  LocalStorageService,
+  LocalStorageSrvInstance,
+} from '../../../core';
 
 @Component({
   selector: 'app-first',

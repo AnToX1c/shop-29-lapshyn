@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 150px;
+}
+
+label {
+  display: inline-block;
+  width: 110px;
+  margin: 10px 0;
+}

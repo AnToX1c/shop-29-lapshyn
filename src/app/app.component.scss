@@ -1,23 +1,15 @@
 h1 {
+  margin-left: auto;
+  margin-right: auto;
+  width: min-content;
   text-align: center;
-}
+  cursor: pointer;
 
-.product {
-  display: inline-block;
-  padding: 10px;
-  margin: 0 20px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
 }
 
 .product-vs-cart {
   display: flex;
-}
-
-app-product-list {
-  width: 75%;
-}
-
-app-cart-list {
-  width: 25%;
 }
